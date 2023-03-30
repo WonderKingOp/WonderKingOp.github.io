@@ -1,0 +1,110 @@
+/* navigation */
+#nav {
+    flex-direction: column;
+}
+
+#nav ul li a {
+    font-size: 1rem;
+    padding: 2px 2px;
+    /* padding-bottom: 8px; */
+}
+
+.logo img {
+
+    transition: all 200ms ease-in-out;
+    animation: first 3s ease-in-out;
+}
+
+@keyframes first {
+    0% {
+        transform: scale(2)translate(0px, 300px);
+
+    }
+
+    50% {
+        transform: scale(4) translate(0px, 39px);
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+.logo img:hover {
+    transform: scale(4) translate(0px, 35px);
+    /* transform: translate(33px, 33px);    */
+}
+
+/* home */
+#home {
+    height: 370px;
+    padding: 3px 28px;
+
+}
+
+#home::before {
+    height: 480px;
+}
+
+#home p {
+    font-size: 13px;
+}
+#home h1 {
+    animation: second 1s ease-in-out 3s;
+}
+
+@keyframes second {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.4);
+
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+/* services */
+#services {
+    flex-direction: column;
+}
+
+#services .box {
+    padding: 14px;
+    margin: 2px 0px;
+    margin-bottom: 20px;
+}
+
+/* client */
+#clients {
+    flex-wrap: wrap;
+}
+
+#clients img {
+    /* padding: ; */
+    width: 131px;
+    height: auto;
+}
+
+/* contact */
+#contact-box form {
+    width: 70%;
+}
+
+/* footer */
+
+/* utility */
+.h-primary {
+    font-size: 26px;
+}
+
+.btn {
+    padding: 4px 8px;
+    font-size: 13px;
+}

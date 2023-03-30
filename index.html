@@ -5,63 +5,575 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>King Gym</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" media="screen and (max-width: 1170px)" href="CSS/Phone.css"> -->
+    <title>Foodie.com</title>
     <style>
-        body {
-            /* CSS reset */
-            margin: 0px;
-            padding: 0px;
-            background: url(img/bg.jpg);
-            color: white;
-            font-family: 'Baloo Bhai 2', cursive;
+        * {
+            margin: 0;
+            scroll-behavior: smooth;
+            padding: 0;
+        }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* nav bar */
+        #nav {
+            display: flex;
+            align-items: center;
+            position: sticky;
+            top: 0px;
+            z-index: 2;
+        }
+
+        #nav::before {
+            content: "";
+            background-color: black;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* logo */
+        .logo {
+            margin: 12px 12px;
+        }
+
+        .logo img {
+            height: 89px;
+            border: 2px solid white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 4px 6px cyan;
+
+            transition: all 200ms ease-in-out;
+            animation: first 5s ease-in-out;
+            /* animation: neon infinite ease-in-out 0s; */
+        }
+
+        @keyframes first {
+            0% {
+                transform: scale(6)translate(40px, 39px) rotate(360deg);
+                box-shadow: 0px 0px 0px 0px cyan;
+            }
+
+            25% {
+                transform: scale(7) translate(40px, 39px) rotate(360deg);
+                box-shadow: 0px 0px 0px 0px cyan;
+            }
+
+            50% {
+                transform: scale(1);
+                /* box-shadow: 0px 0px 8px 10px cyan; */
+                box-shadow: 0px 0px 0px 0px cyan;
+            }
+
+            75% {
+                transform: scale(1);
+                box-shadow: 0px 0px 8px 10px cyan;
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0px 0px 4px 6px cyan;
+            }
+        }
+
+
+        .logo img:hover {
+            transform: scale(4) translate(35px, 35px);
+            /* transform: translate(33px, 33px);    */
+        }
+
+        /* list */
+        #nav ul {
+            display: flex;
+        }
+
+        #nav ul li {
+            list-style: none;
+            font-size: 1.3rem;
+        }
+
+        #nav ul li a {
+            display: block;
+            text-decoration: none;
+            /* font-family: cursive; */
+
+            padding: 2px 25px;
+            margin: 2px 10px;
+
+            border: 2px solid white;
+            background-color: black;
+            color: white;
+            border-radius: 10px;
+
+            transition: all 100ms ease-in-out;
+        }
+
+        #nav ul li a:hover {
+            transform: scale(1.1);
+            background-color: white;
+            color: black;
+        }
+
+        /* home */
+        #home {
+            display: flex;
+            flex-direction: column;
+            padding: 3px 60px;
+            height: 550px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #home::before {
+            content: "";
+            position: absolute;
+            background: url('bg1.jpg') no-repeat center center/cover;
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            z-index: -2;
+            opacity: 0.89;
+        }
+
+        /* utility classes */
+        #home h1 {
+            color: white;
+            text-align: center;
+
+            animation: second 1s ease-in-out 5s;
+        }
+
+        @keyframes second {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(2);
+
+            }
+
+            100% {
+                transform: scale(1);
+
+            }
+        }
+
+        #home p {
+            color: white;
+            text-align: center;
+            font-size: 1.5rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .btn {
+            padding: 4px 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            background-color: yellow;
+            margin: 17px;
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            transition: all 100ms ease-in-out;
+        }
+
+        .btn:hover {
+            transform: scale(1.3);
+            background-color: white;
+            border: 2px solid yellow;
+        }
+
+        /* services section */
+        #services {
+            margin: 34px;
+            display: flex;
+
+        }
+
+        #services .box {
+            border: 2px solid black;
+            background-color: yellow;
+            padding: 34px;
+            margin: 2px 40px;
+            border-radius: 90px 9px;
+            box-shadow: 0px 0px 49px -3px #00caff;
+        }
+
+        #services .box img {
+            height: 160px;
+            display: block;
+            margin: auto;
+        }
+
+        #services .box p {
+            font-size: 1.3rem;
+            font-family: Arial, Helvetica, sans-serif;
+            /* font-weight: bold; */
+        }
+
+
+        /* client-section */
+        #client-section {
+            position: relative;
+
+        }
+
+        #client-section::before {
+            content: "";
+            position: absolute;
+            background: url('bg.jpg');
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        #clients {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #clients img {
+            height: 124px;
+        }
+
+        .client-item {
+            padding: 23px;
+        }
+
+
+        /* contact section */
+        #contact {
+            position: relative;
+        }
+
+        #contact::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background: url('contact.jpg') no-repeat center center/cover;
+        }
+
+        #contact-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 34px;
+        }
+
+        #contact-box form {
+            width: 40%;
+        }
+
+        #contact-box label {
+            font-size: 1.3rem;
+        }
+
+
+        #contact-box input,
+        #contact-box textarea {
+            border-radius: 8px;
+            border: 2px solid black;
+            width: 100%;
+            padding: 0.5rem;
+        }
+
+        footer {
+            background-color: black;
+            color: white;
+            padding: 9px 10px;
+        }
+
+        /* utility */
+        .h-primary {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 3.8rem;
+            padding: 12px;
+            text-shadow: 3px 3px 5px black;
+        }
+
+        .h-secondary {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 2.8rem;
+            text-shadow: 3px 3px 5px black;
+            padding: 12px;
+        }
+
+        .center {
+            text-align: center;
+            /* text-shadow: 3px 3px 5px black; */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @media only screen and (max-width: 1136px) {
+
+            /* navigation */
+            #nav {
+                flex-direction: column;
+            }
+
+            #nav ul li a {
+                font-size: 1rem;
+                padding: 2px 2px;
+                margin: 5px;
+                /* padding-bottom: 8px; */
+            }
+
+            .logo {
+                margin: 2px 12px;
+            }
+
+            .logo img {
+
+                box-shadow: 0px 0px 4px 3px cyan;
+                /* box-shadow: inset 0px 0px 4px 3px cyan; */
+                height: 60px;
+                margin-top: 4px;
+                transition: all 200ms ease-in-out;
+                animation: first 5s ease-in-out;
+            }
+
+            @keyframes first {
+                0% {
+                    transform: scale(3)translate(0px, 300px) rotate(360deg);
+                    box-shadow: 0px 0px 0px 0px cyan;
+                }
+
+                25% {
+                    transform: scale(5) translate(0px, 39px) rotate(360deg);
+                    box-shadow: 0px 0px 0px 0px cyan;
+
+                }
+
+                50% {
+                    transform: scale(1);
+                    box-shadow: 0px 0px 0px 0px cyan;
+                }
+
+                75% {
+                    box-shadow: 0px 0px 8px 6px cyan;
+                }
+
+                100% {
+                    box-shadow: 0px 0px 4px 3px cyan;
+                }
+            }
+
+            .logo img:hover {
+                transform: scale(5) translate(0px, 35px);
+                /* transform: translate(33px, 33px);    */
+            }
+
+            /* home */
+            #home {
+                height: 370px;
+                padding: 3px 28px;
+
+            }
+
+            #home::before {
+                height: 480px;
+            }
+
+            #home p {
+                font-size: 14px;
+            }
+
+            #home h1 {
+                animation: second 1s ease-in-out 4s;
+            }
+
+            @keyframes second {
+                0% {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.4);
+
+                }
+
+                100% {
+                    transform: scale(1);
+
+                }
+            }
+
+            /* services */
+            #services {
+                flex-direction: column;
+            }
+
+            #services .box {
+                padding: 14px;
+                margin: 2px 0px;
+                margin-bottom: 20px;
+            }
+
+            /* client */
+            #clients {
+                flex-wrap: wrap;
+            }
+
+            #clients img {
+                /* padding: ; */
+                width: 131px;
+                height: auto;
+            }
+
+            /* contact */
+            #contact-box form {
+                width: 70%;
+            }
+
+            /* footer */
+
+            /* utility */
+            .h-primary {
+                font-size: 40px;
+            }
+
+            .btn {
+                padding: 4px 4px;
+                font-size: 22px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <!-- left box for logo -->
-        <div class="left">
-            <img src="img/logo.png" alt="">
-            <div>King Gym</div>
+    <span id="homeee"></span>
+    <nav id="nav">
+        <div class="logo">
+            <img src="logo.png" alt="Foodie.com">
         </div>
-        <!-- mid box for navbar -->
-        <div class="mid">
-            <ul class="navbar">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">Fitness</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Contact us</a></li>
-            </ul>
-        </div>
-        <!-- right box for buttons -->
-        <div class="right">
-            <button class="btn">Call us now</button>
-            <button class="btn">Email us</button>
-        </div>
-    </header> -->
 
-    <div class="content">
-        <h2>Join the best Gym of basauri NOW!!!</h2>
-        <form action="noaction.php">
-            <div class="form">
-                <input type="text" name="" placeholder="Enter your Name">
+        <ul>
+            <li class="item"><a href="#homeee">Home</a></li>
+            <li class="item"><a href="#servicesss">Services</a></li>
+            <li class="item"><a href="#clienttt">Clients</a></li>
+            <li class="item"><a href="#contacttt">Contact us</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h1 class="h-primary">Welcome to foodie</h1>
+        <P>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sequi repellat maiores voluptatum dolores tenetur
+        </P>
+        <P>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</P>
+        <button class="btn">Order Now</button>
+        <span id="servicesss"></span>
+    </section>
+
+
+    <section class="services-container">
+        <h1 class="h-primary center">Our Services</h1>
+        <div id="services">
+            <div class="box">
+                <img src="1.png" alt="">
+                <h2 class="h-secondary center">Food Ordering</h2>
+                <p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore perspiciatis
+                    molestiae similique laudantium quaerat non adipisci minima nesciunt.</p>
             </div>
-            <div class="form">
-                <input type="text" name="" placeholder="Enter your Age">
+            <div class="box">
+                <img src="2.png" alt="">
+                <h2 class="h-secondary center">Large Variety</h2>
+                <p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore perspiciatis
+                    molestiae similique laudantium quaerat non adipisci minima nesciunt.</p>
             </div>
-            <div class="form">
-                <input type="text" name="" placeholder="Enter your Gender">
+            <div class="box">
+                <img src="3.png" alt="">
+                <h2 class="h-secondary center">Quick Service</h2>
+                <span id="clienttt"></span>
+                <p class="center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore perspiciatis
+                    molestiae similique laudantium quaerat non adipisci minima nesciunt.</p>
             </div>
-            <div class="form">
-                <input type="text" name="" placeholder="Enter your Locality">
+
+        </div>
+    </section>
+
+    <section id="client-section">
+        <h1 class="h-primary center">Our Client</h1>
+        <div id="clients">
+            <div class="client-item">
+                <img src="logo1.png" alt="">
             </div>
-            <button class="btn1">Submit</button>
-        </form>
-    </div>
+            <div class="client-item">
+                <img src="logo2.png" alt="">
+            </div>
+            <div class="client-item">
+                <img src="logo3.png" alt="">
+            </div>
+            <span id="contacttt"></span>
+            <div class="client-item">
+                <img src="logo4.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1 class="h-primary center">Contact Us</h1>
+        <div id="contact-box">
+            <form action="">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="name" placeholder="Enter your Name">
+                </div>
+                <div class="form-group">
+                    <label for="name">Email:</label>
+                    <input type="email" name="name" id="name" placeholder="Enter your Email">
+                </div>
+                <div class="form-group">
+                    <label for="name">Phone No.:</label>
+                    <input type="phone" name="name" id="name" placeholder="Enter your Phone No.">
+                </div>
+                <div class="form-group">
+                    <label for="name">Message:</label>
+                    <textarea name="Message" id="messGE" cols="30" rows="10"></textarea>
+                </div>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="center">
+            copyright &copy; www.foodie.com. All Rights Reserved!
+        </div>
+    </footer>
 </body>
 
 </html>
